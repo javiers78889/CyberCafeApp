@@ -2,17 +2,26 @@
     background-image: url('../img/fete-blanco.png');
     background-color: #E21D1D;
     background-position: center;
-    background-size: 50px 50px; /* Ajusta el tamaño de las imágenes pequeñas */
+    background-size: 50px 50px; /* Tamaño de las imágenes pequeñas */
     background-repeat: repeat; /* Repite la imagen */
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px); /* Desenfoque sutil */
     width: 100%;
     height: 140vh;
-    
+    animation: diagonalMove 8s linear infinite; /* Mantén la animación en 30 segundos */
 }
 
-.perfil{
-    
+
+@keyframes diagonalMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 200px 200px; /* Movimiento más pequeño para evitar distorsión */
+    }
 }
+
+
+
 
 .loading-container {
     display: flex;
