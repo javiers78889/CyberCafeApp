@@ -31,15 +31,18 @@ export const Login = ({ Logueo }) => {
                 title: "Introduzca Un Usuario y Password",
                 text: "Introduzca sus Credenciales",
             });
+            setCargando(false);
+        }
+        else{
             
+            setTimeout(() => {
+                
+                Logueo(UserValid);
+                setCargando(false);
+            }, 3000)
         }
         
-        setTimeout(() => {
-            
-            Logueo(UserValid);
-            setCargando(false);
-        }, 3000)
-        console.log(cargando)
+     
     }
 
 
