@@ -97,22 +97,33 @@ export const Validation = () => {
         const { usuario } = obj
 
         const verifica = usuarios.filter(u => u.usuario === usuario)
-     
+        if(verifica[0].usuario != "admin"){
 
-        if (verifica.length > 0){
-            const update = await UpdateUsers(obj)
-        Swal.fire({
-            title: "Datos Actualizados!",
-            text: "Presione Ok para continuar!",
-            icon: "success"
-        });
-        navigate('/');
-            
+            if (verifica.length > 0 ){
+                const update = await UpdateUsers(obj)
+            Swal.fire({
+                title: "Datos Actualizados!",
+                text: "Presione Ok para continuar!",
+                icon: "success"
+            });
+            navigate('/');
+                
+            }
+            else{
+                Swal.fire({
+                    title: "Usuario No Encontrado!",
+                    text: "Presione Ok para continuar!",
+                    icon: "error"
+                });
+    
+            }
+
         }
         else{
+
             Swal.fire({
-                title: "Usuario No Encontrado!",
-                text: "Presione Ok para continuar!",
+                title: "No se Puede Cambiar La Contraseña de Admin!",
+                text: "Contacte A Soporte Tecnico!",
                 icon: "error"
             });
 
