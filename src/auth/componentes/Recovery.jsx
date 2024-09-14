@@ -41,7 +41,7 @@ export const Recovery = ({ UpdateUser }) => {
 
 
                 <button type="submit" className="btn btn-danger form-control">Actualizar</button>
-                <Link className="btn btn-warning mt-3">Volver</Link>
+                <Link className="btn btn-warning mt-3" to="/">Volver</Link>
             </form>
         </div>
     )
