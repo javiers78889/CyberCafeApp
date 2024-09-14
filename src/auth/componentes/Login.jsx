@@ -72,7 +72,7 @@ export const Login = ({ Logueo }) => {
                         </div>
                     ) : (
                         <>
-                            <Link to="/Recovery">Olvido Su Contraseña?</Link>
+                            <Link  to="/Recovery">Olvido Su Contraseña?</Link>
                             <button type="submit" className="btn btn-danger form-control">Login</button>
                         </>
 
@@ -82,6 +82,7 @@ export const Login = ({ Logueo }) => {
 
 
             </div>
+            
 
         </div>
     )

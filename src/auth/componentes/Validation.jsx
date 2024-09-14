@@ -10,6 +10,7 @@ import { findAllUsers, UpdateUsers, } from "../services/Users";
 import Swal from 'sweetalert2';
 import { Recovery } from "./Recovery";
 import { useRestApi } from "../../hooks/useRestApi";
+import { Rastreo } from "./Rastreo";
 
 
 
@@ -146,6 +147,7 @@ export const Validation = () => {
                     <>
                         <Route path="/" element={<Login Logueo={logueo} />} />
                         <Route path="/Recovery" element={<Recovery UpdateUser={UpdateUser} />} />
+                        <Route path="/Rastreo" element={<Rastreo/>} />
                         <Route path="/*" element={<Navigate to="/" />} />
                     </>
                 )}
