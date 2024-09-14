@@ -2,7 +2,7 @@
 import axios from "axios";
 
 
-const api = 'http://localhost:4000/users';
+const api = 'https://fastshippingback-t6ub.onrender.com/users';
 
 export const findAllUsers = async () => {
     try {
