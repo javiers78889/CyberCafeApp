@@ -21,7 +21,6 @@ export const Direcciones = ({ Login }) => {
             <div className='d-flex gap-4'>
                 <MiamiPanama flipped={flipped} Login={Login} handleFlip={handleFlip}/>
 
-                <ChinaPanama flipped={flipped} Login={Login} handleFlip={handleFlip} />
                 <MaritimoMiamiPanama flipped={flipped} Login={Login} handleFlip={handleFlip}/>
                
             </div>

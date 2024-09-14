@@ -10,6 +10,7 @@ import { handlePayment } from "../payment/pago";
 export const useRestApi = () => {
     const [paquetes, dispatch] = useReducer(PaqueteReducer, []);
     const [isLoading, setIsLoading] = useState(true);
+    const [usuarios,setUsuarios]=useState([])
     const navigate = useNavigate();
 
     const fetchPaquetes = async () => {
@@ -29,9 +30,19 @@ export const useRestApi = () => {
         }
         setIsLoading(false);
     };
+    const fetchUsuarios = async () => {
+        try {
+            const result = await findAllUsers();
+           setUsuarios(result)
+        } catch (error) {
+            console.error("Error al cargar los Usuarios:", error);
+        }
+       
+    };
 
     useEffect(() => {
         fetchPaquetes();
+        fetchUsuarios();
     }, []);
 
     const addPaquetes = async (obj) => {
@@ -52,18 +63,11 @@ export const useRestApi = () => {
             });
             return;
         }
-        if (filtro[0].plan === 'Plan Emprendedor') {
-            tarifas = 2.60
+        if (filtro[0].plan === 'Plan Aereo') {
+            tarifas = 3.25
             precio = (obj.peso * tarifas).toFixed(2);
-        } else if (filtro[0].plan === 'Plan Standar') {
-            if (obj.peso === '1') {
-                tarifas = 3
-                precio = (obj.peso * tarifas).toFixed(2);
-            } else if (obj.peso > '1') {
-                tarifas = 2.75
-                precio = (obj.peso * tarifas).toFixed(2);
-            }
-        } else if (filtro[0].plan === 'Plan Delivery') {
+
+        } else if (filtro[0].plan === 'Plan Maritimo') {
             tarifas = 3.25;
             precio = (obj.peso * tarifas).toFixed(2);
 
@@ -87,16 +91,32 @@ export const useRestApi = () => {
     };
     const addUsers = async (obj) => {
         const nuevoUsuario = { ...obj }; // Asegúrate de que el objeto sea un usuario
+        const { usuario,telefono,correo } = nuevoUsuario
+        const usuarios = await findAllUsers();
+
+        const verifica = usuarios.filter(u => u.usuario === usuario || u.telefono === telefono || u.correo === correo)
+       
 
 
+        if (verifica.length > 0) {
+            Swal.fire({
+                title: "Este Usuario, Telefono , o Correo Ya Existe!",
+                text: "Presione Ok para continuar!",
+                icon: "error"
+            });
 
-        Swal.fire({
-            title: "Usuario Creado!",
-            text: "Presione Ok para continuar!",
-            icon: "success"
-        });
-        navigate('profile/paquetes');
-        const posteo = await registerAllUsers(nuevoUsuario);
+        }
+        else {
+
+            Swal.fire({
+                title: "Usuario Creado!",
+                text: "Presione Ok para continuar!",
+                icon: "success"
+            });
+            navigate('profile/paquetes');
+            const posteo = await registerAllUsers(nuevoUsuario);
+        }
+
 
     };
 
@@ -162,6 +182,7 @@ export const useRestApi = () => {
         addUsers,
         Entregar,
         pagarPaquete,
+        usuarios
 
 
     }

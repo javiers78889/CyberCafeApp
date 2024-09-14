@@ -32,46 +32,21 @@ export const MaritimoMiamiPanama = ({ flipped, Login, handleFlip }) => {
             <div className="card carta back">
 
                 <div className="card-body d-flex justify-content-center flex-column">
-                    {alterna ? (
-                        <>
-
-                            <h5 className="card-title text-center"><strong>Miami-Panama Por Libras</strong></h5>
+                
+                            <h5 className="card-title text-center"><strong>Maritimo</strong></h5>
 
                             <p className="card-text">
-                                <strong>Nombre:</strong> F2S/AGS OCEAN {prueba} <br />
-                                <strong>Apellido:</strong>{Login.user[0].nombre} <br />
-                                <strong>Dirección:</strong> 5401 NW 72ND AVE.<br />
-                                <strong>Código postal</strong>: 33166 - 4941.<br />
-                                <strong>Ciudad:</strong> Miami<br />
+                                <strong>Nombre:</strong> EVAN3 OCEAN {Login.user[0].nombre}{Login.user[0].apellido} <br />
+                                <strong>Dirección:</strong> 5401 NW 72ND AVE,Doral FL 33166<br />
+                                <strong>Ciudad:</strong> Doral<br />
                                 <strong>Estado:</strong> Florida<br />
                                 <strong>País:</strong> USA<br />
-                                <strong>Teléfono:</strong> +1 (786) 488-3729<br />
+                                <strong>Código postal</strong>: 33166<br />
+                                <strong>Teléfono:</strong> 305-3645238<br />
                             </p>
 
-                        </>
-
-
-
-                    ) : (
-                        <>
-
-                            <h5 className="card-title text-center"><strong>Miami-Panama Por Pies Cubicos</strong></h5>
-
-                            <p className="card-text">
-                                 <strong>Nombre:</strong> Ocean /AGS {prueba}<br />
-                                 <strong>Apellido:</strong> nombre y apellido<br />
-                                 <strong>Direccion #1:</strong> 1345 N.W, 98TH CT, Unit 2<br />
-                                 <strong>Ciudad:</strong> MIAMI,<br />
-                                 <strong>Estado:</strong> FL<br />
-                                 <strong>Codigo postal:</strong> 33172-3049<br />
-                                 <strong>Pais:</strong> USA<br />
-                                 <strong>Tel:</strong> 786-360-2816<br />
-                            </p>
-                        </>
-                    )}
-                    {alterna ? (
-                        <button className="btn btn-warning" onClick={alternar}>Direccion X Pies Cubicos</button>) :
-                        (<button className="btn btn-success" onClick={alternar}>Direccion Por Libras</button>)}
+                      
+                    
                     <button className="btn btn-secondary my-1" onClick={() => handleFlip('alternativa')}>Volver</button>
                 </div>
             </div>

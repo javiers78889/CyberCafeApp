@@ -4,10 +4,12 @@ import { UserRouter } from "../../routers/UserRouter";
 import { LoginReducer } from "../../auth/reducer/LoginReducer";
 
 import { Login } from "./Login";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { Nav } from "./Nav";
-import { findAllUsers,  } from "../services/Users";
+import { findAllUsers, UpdateUsers, } from "../services/Users";
 import Swal from 'sweetalert2';
+import { Recovery } from "./Recovery";
+import { useRestApi } from "../../hooks/useRestApi";
 
 
 
@@ -19,7 +21,9 @@ const initialLog = JSON.parse(sessionStorage.getItem("log")) || {
 };
 
 export const Validation = () => {
+    const { usuarios } = useRestApi()
     const [loginState, dispatch] = useReducer(LoginReducer, initialLog);
+    const navigate = useNavigate();
 
     const [UsuariosExis, SetUsuarioExis] = useState(initialLog);
     useEffect(() => {
@@ -33,7 +37,7 @@ export const Validation = () => {
         axiosData();
     }, [])
 
-    
+
 
     useEffect(() => {
         sessionStorage.setItem("log", JSON.stringify(loginState));
@@ -44,12 +48,12 @@ export const Validation = () => {
     const logueo = async (valor) => {
 
         const Saludo = valor.usuario;
-        const contra= valor.password;
-        
-        
+        const contra = valor.password;
+
+
         const VerificaUser = UsuariosExis.filter(u => u.usuario === Saludo);
         const VerificaSome = UsuariosExis.some(u => u.usuario === Saludo && u.contraseña === contra);
-        
+
 
         if (VerificaSome) {
 
@@ -88,6 +92,34 @@ export const Validation = () => {
 
     };
 
+    const UpdateUser = async (obj) => {
+       
+        const { usuario } = obj
+
+        const verifica = usuarios.filter(u => u.usuario === usuario)
+     
+
+        if (verifica.length > 0){
+            const update = await UpdateUsers(obj)
+        Swal.fire({
+            title: "Datos Actualizados!",
+            text: "Presione Ok para continuar!",
+            icon: "success"
+        });
+        navigate('/');
+            
+        }
+        else{
+            Swal.fire({
+                title: "Usuario No Encontrado!",
+                text: "Presione Ok para continuar!",
+                icon: "error"
+            });
+
+        }
+
+    }
+
     return (
         <>
             {loginState.isAuth ? (
@@ -98,11 +130,12 @@ export const Validation = () => {
 
             <Routes>
                 {loginState.isAuth ? (
-                    <Route path="/*" element={<UserRouter Login={loginState} />} />
+                    <Route path="/*" element={<UserRouter Login={loginState} UsuariosExis={UsuariosExis} />} />
                 ) : (
                     <>
-                        <Route path="/login" element={<Login Logueo={logueo} />} />
-                        <Route path="/*" element={<Navigate to="/login" />} />
+                        <Route path="/" element={<Login Logueo={logueo} />} />
+                        <Route path="/Recovery" element={<Recovery UpdateUser={UpdateUser} />} />
+                        <Route path="/*" element={<Navigate to="/" />} />
                     </>
                 )}
             </Routes>

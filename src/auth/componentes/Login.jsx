@@ -3,6 +3,7 @@ import { useState } from 'react';
 import fastShippingImg from '../../img/fete.jpeg';
 import '../../estilos/app.css'
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 const initalUserValid = {
     'usuario': '',
     'password': '',
@@ -22,7 +23,7 @@ export const Login = ({ Logueo }) => {
         event.preventDefault();
         const username = event.target.usuario.value.trim();
         const password = event.target.password.value.trim();
-    
+
         setCargando(true)
         // Verificar si alguno de los campos está en blanco
         if (username === '' || password === '') {
@@ -33,16 +34,16 @@ export const Login = ({ Logueo }) => {
             });
             setCargando(false);
         }
-        else{
-            
+        else {
+
             setTimeout(() => {
-                
+
                 Logueo(UserValid);
                 setCargando(false);
             }, 3000)
         }
-        
-     
+
+
     }
 
 
@@ -70,8 +71,10 @@ export const Login = ({ Logueo }) => {
                             <p>Loading...</p>
                         </div>
                     ) : (
-
-                        <button type="submit" className="btn btn-danger form-control">Login</button>
+                        <>
+                            <Link to="/Recovery">Olvido Su Contraseña?</Link>
+                            <button type="submit" className="btn btn-danger form-control">Login</button>
+                        </>
 
                     )}
                 </form>

@@ -41,7 +41,8 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
                                 <>
                                     <th scope="col">Fecha de Registro</th>
                                     <th scope="col">Pago</th>
-                                    <th scope="col"></th>
+                                    {Login.user[0].usuario === 'admin' ?(<th scope="col"></th>):('')}
+                                    
                                 </>
                             )}
                         </tr>

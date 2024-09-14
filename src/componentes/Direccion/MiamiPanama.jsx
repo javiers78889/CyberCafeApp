@@ -21,7 +21,7 @@ export const MiamiPanama = ({ flipped, Login, handleFlip }) => {
                     </svg>
                 </div>
                 <div className="card-body d-flex justify-content-center flex-column">
-                    <h5 className="card-title text-center"><strong>Casillero Aéreo X LIBRAS</strong></h5>
+                    <h5 className="card-title text-center"><strong>Casillero Aéreo </strong></h5>
                     <p className="card-text text-center">
                         Miami-Panama
                     </p>
@@ -31,50 +31,30 @@ export const MiamiPanama = ({ flipped, Login, handleFlip }) => {
             <div className="card carta back">
 
                 <div className="card-body d-flex justify-content-center flex-column">
-                    {alterna ? (
-                        <>
+        
 
-
-                            <h5 className="text-center"><strong>Direccion Comercial</strong></h5>
+                            <h5 className="text-center"><strong>Aereo</strong></h5>
                             <p className="card-text">
                                 <strong>Nombre:</strong> {Login.user[0].usuario}<br />
                                 <strong>Apellido:</strong> {Login.user[0].nombre}<br />
                                 <strong>Direccion #1:</strong> 1345 N.W. 98TH CT, Unit 2<br />
-                                <strong>Cuidad:</strong> MIAMI,<br />
-                                <strong>Estado:</strong> FL<br />
-                                <strong>Codigo postal:</strong> 33172-3049<br />
-                                <strong>Pais:</strong> USA<br />
-                                <strong>Tel:</strong> 786-360-2816<br />
-
-                            </p>
-
-                        </>
-
-
-
-
-                    ) : (
-                        <>
-                            <h5 className="text-center"><strong>Direccion Residencial</strong></h5>
-                            <p className="card-text">
-                                <strong>Nombre:</strong> {Login.user[0].usuario}<br />
-                                <strong>Apellido:</strong> {Login.user[0].nombre}<br />
-                                <strong>Direccion #2:</strong> 3043 SW 16TH TERRACE<br />
-                                <strong>Ciudad:</strong> MIAMI,<br />
+                                <strong>Ciudad:</strong> Doral,<br />
                                 <strong>Estado:</strong> Florida<br />
-                                <strong>Codigo postal:</strong> 33145<br />
+                                <strong>Codigo postal:</strong> 33166<br />
                                 <strong>Pais:</strong> USA<br />
-                                <strong>Tel:</strong> +1 (786) 360-2816<br />
+                                <strong>Tel:</strong> 305-3645238<br />
 
                             </p>
-                        </>
 
-                    )}
+                        
 
-                    {alterna ? (
-                        <button className="btn btn-warning" onClick={alternar}>Direccion Comercial</button>) :
-                        (<button className="btn btn-success" onClick={alternar}>Direccion Residencial</button>)}
-                    <button className="btn btn-secondary my-1" onClick={() => handleFlip('aerea')}>Volver</button>
+
+
+
+                   
+
+                    
+                    <button className="btn btn-secondary my-1 " onClick={() => handleFlip('aerea')}>Volver</button>
                 </div>
             </div>
         </div>

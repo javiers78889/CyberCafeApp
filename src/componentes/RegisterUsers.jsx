@@ -53,9 +53,8 @@ export const RegisterUsers = ({ addUsers, Login }) => {
                         onChange={onInputChange}
                     >
                         <option value="">Selecciona un Plan...</option>
-                        <option value="Plan Standar">Plan Standar</option>
-                        <option value="Plan Emprendedor">Plan Emprendedor</option>
-                        <option value="Plan Delivery">Plan Delivery</option>
+                        <option value="Plan Aereo">Plan Aereo</option>
+                        <option value="Plan Maritimo">Plan Maritimo</option>
                     </select>
                 </div>
                 <div className="mb-3">

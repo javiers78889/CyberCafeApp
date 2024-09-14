@@ -2,7 +2,7 @@
 import axios from "axios";
 
 
-const api = 'https://fastshippingback-t6ub.onrender.com/users';
+const api = 'http://localhost:4000/users';
 
 export const findAllUsers = async () => {
     try {
@@ -11,7 +11,7 @@ export const findAllUsers = async () => {
 
     } catch (error) {
 
-       handleError(error)
+        handleError(error)
 
     }
 
@@ -20,10 +20,10 @@ export const findAllUsers = async () => {
 }
 
 
-export const registerAllUsers = async ({ usuario, contraseña, isAuth, nombre, plan, telefono,fechaNacimiento,correo }) => {
+export const registerAllUsers = async ({ usuario, contraseña, isAuth, nombre, plan, telefono, fechaNacimiento, correo }) => {
 
     try {
-        const posteo = await axios.post(api, { usuario, contraseña, isAuth, nombre, plan, telefono,fechaNacimiento,correo })
+        const posteo = await axios.post(api, { usuario, contraseña, isAuth, nombre, plan, telefono, fechaNacimiento, correo })
         return posteo.data;
 
     } catch (error) {
@@ -33,6 +33,17 @@ export const registerAllUsers = async ({ usuario, contraseña, isAuth, nombre, p
 
 }
 
+export const UpdateUsers = async ({ usuario, contraseña }) => {
+    try {
+        const update = await axios.put(api, { usuario, contraseña })
+
+        return update.data
+
+    } catch (error) {
+        handleError(error)
+
+    }
+}
 
 const handleError = (error) => {
     if (axios.isAxiosError(error)) {
