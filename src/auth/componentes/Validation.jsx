@@ -65,7 +65,7 @@ export const Validation = () => {
 
             Swal.fire({
                 icon: 'success',
-                title: `Bienvenido Señor ${VerificaUser[0].nombre} `,
+                title: `Bienvenid@ ${VerificaUser[0].nombre} `,
                 text: 'Un Gusto Verlo Por Aqui!',
             });
 
