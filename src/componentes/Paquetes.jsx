@@ -14,10 +14,19 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
 
     const ValorLogueo = (Login.user && Login.user.length > 0) ? Login.user[0].usuario : '';
 
+    // Filter paquetes for regular users
+    const filteredPaquetes = Login.user[0].usuario === 'admin'
+        ? paquetes
+        : paquetes.filter(pack => pack.usuario === ValorLogueo);
+
     // Paginate the items
     const offset = currentPage * itemsPerPage;
-    const currentPaquetes = paquetes.slice(offset, offset + itemsPerPage);
-    const pageCount = Math.ceil(paquetes.length / itemsPerPage);
+    const currentPaquetes = filteredPaquetes.slice(offset, offset + itemsPerPage);
+    const pageCount = Login.user[0].usuario === 'admin'
+        ? Math.ceil(paquetes.length / itemsPerPage)
+        : filteredPaquetes.length > 0
+            ? Math.ceil(filteredPaquetes.length / itemsPerPage)
+            : 1;  // Ensure at least one page for users
 
     // Handle page click
     const handlePageClick = (event) => {
@@ -63,9 +72,9 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
                                     </tr>
                                 ))
                             ) : (
-                                currentPaquetes.filter(pack => pack.usuario === ValorLogueo).map(pack => (
+                                currentPaquetes.map(pack => (
                                     <tr key={pack.id}>
-                                        <UsersPackage key={pack.id} pack={pack} ValorLogueo={ValorLogueo} pago={pago} generatePDF={generatePDF} Login={Login} />
+                                        <UsersPackage pack={pack} ValorLogueo={ValorLogueo} pago={pago} generatePDF={generatePDF} Login={Login} />
                                     </tr>
                                 ))
                             )
@@ -81,7 +90,7 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
                     </tbody>
                 </table>
 
-                {paquetes.length > itemsPerPage && (
+                {(pageCount > 1) && (
                     <ReactPaginate
                         pageCount={pageCount}
                         onPageChange={handlePageClick}
@@ -101,3 +110,4 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
         </div>
     );
 };
+
