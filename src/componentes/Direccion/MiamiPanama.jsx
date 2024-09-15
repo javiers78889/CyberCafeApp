@@ -37,7 +37,7 @@ export const MiamiPanama = ({ flipped, Login, handleFlip }) => {
                             <p className="card-text">
                                 <strong>Nombre:</strong> {Login.user[0].usuario}<br />
                                 <strong>Apellido:</strong> {Login.user[0].nombre}<br />
-                                <strong>Direccion #1:</strong> 1345 N.W. 98TH CT, Unit 2<br />
+                                <strong>Direccion #1:</strong> 5401 NW 72ND AVE,Doral FL 33166<br />
                                 <strong>Ciudad:</strong> Doral,<br />
                                 <strong>Estado:</strong> Florida<br />
                                 <strong>Codigo postal:</strong> 33166<br />
