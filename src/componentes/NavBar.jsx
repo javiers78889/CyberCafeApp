@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom"
 
 export const NavBar = ({ logout, Login }) => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-1 ">
             <div className="container-fluid d-flex justify-content-between">
                 <Link className="navbar-brand" to="/">CyberCaféChame</Link>
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export const ListaUsuarios = ({ UsuariosExis }) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const usersPerPage = 6;
+    const usersPerPage = 4;
 
     // Asegúrate de que UsuariosExis sea un array
     const validUsuariosExis = Array.isArray(UsuariosExis) ? UsuariosExis : [];
@@ -24,9 +24,9 @@ export const ListaUsuarios = ({ UsuariosExis }) => {
 
     return (
         <>
-            <h3>Usuarios Registrados</h3>
+            <h5>Usuarios Registrados</h5>
             <table className="table table-hover table-striped">
-                <thead>
+                <thead className='table-dark'>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Usuario</th>
