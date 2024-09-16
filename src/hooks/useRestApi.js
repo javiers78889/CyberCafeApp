@@ -115,6 +115,7 @@ export const useRestApi = () => {
             });
             navigate('profile/paquetes');
             const posteo = await registerAllUsers(nuevoUsuario);
+            findAllUsers()
         }
 
 
