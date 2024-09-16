@@ -24,7 +24,7 @@ export const ListaUsuarios = ({ UsuariosExis }) => {
 
     return (
         <>
-            <h5>Usuarios Registrados</h5>
+            <h6><strong>Lista De Usuarios Registrados</strong></h6>
             <table className="table table-hover table-striped">
                 <thead className='table-dark'>
                     <tr>

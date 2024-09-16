@@ -22,7 +22,7 @@ export const MaritimoMiamiPanama = ({ flipped, Login, handleFlip }) => {
                     </svg>
                 </div>
                 <div className="card-body d-flex justify-content-center flex-column">
-                    <h5 className="card-title text-center"><strong>Casillero Maritimo </strong> </h5>
+                    <h5 className="card-title text-center"><strong>Casillero Marítimo </strong> </h5>
                     <p className="card-text text-center">
                         Miami-Panama
                     </p>
@@ -33,7 +33,7 @@ export const MaritimoMiamiPanama = ({ flipped, Login, handleFlip }) => {
 
                 <div className="card-body d-flex justify-content-center flex-column">
                 
-                            <h5 className="card-title text-center"><strong>Maritimo</strong></h5>
+                            <h6 className="card-title text-center"><strong>Marítimo</strong></h6>
 
                             <p className="card-text">
                                 <strong>Nombre:</strong> EVAN3 OCEAN {Login.user[0].nombre}{Login.user[0].apellido} <br />

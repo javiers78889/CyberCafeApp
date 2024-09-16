@@ -33,7 +33,7 @@ export const MiamiPanama = ({ flipped, Login, handleFlip }) => {
                 <div className="card-body d-flex justify-content-center flex-column">
         
 
-                            <h5 className="text-center"><strong>Aereo</strong></h5>
+                            <h6 className="text-center"><strong>Aéreo</strong></h6>
                             <p className="card-text">
                                 <strong>Nombre:</strong> {Login.user[0].usuario}<br />
                                 <strong>Apellido:</strong> {Login.user[0].nombre}<br />

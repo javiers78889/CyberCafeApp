@@ -94,43 +94,49 @@ export const Validation = () => {
     };
 
     const UpdateUser = async (obj) => {
-       
-        const { usuario } = obj
+        const { usuario } = obj;
 
-        const verifica = usuarios.filter(u => u.usuario === usuario)
-        if(verifica[0].usuario != "admin"){
+        // Buscar el usuario en la lista
+        const verifica = usuarios.find(u => u.usuario === usuario);
 
-            if (verifica.length > 0 ){
-                const update = await UpdateUsers(obj)
+        // Verificar si el usuario no existe
+        if (!verifica) {
+            Swal.fire({
+                title: "Usuario No Encontrado!",
+                text: "Presione Ok para continuar!",
+                icon: "error"
+            });
+            return;
+        }
+
+        // Verificar si el usuario es "admin"
+        if (verifica.usuario === "admin") {
+            Swal.fire({
+                title: "No se Puede Cambiar La Contraseña de Admin!",
+                text: "Contacte A Soporte Tecnico!",
+                icon: "error"
+            });
+            return;
+        }
+
+        // Si el usuario no es admin, proceder con la actualización
+        try {
+            const update = await UpdateUsers(obj);
             Swal.fire({
                 title: "Datos Actualizados!",
                 text: "Presione Ok para continuar!",
                 icon: "success"
             });
             navigate('/');
-                
-            }
-            else{
-                Swal.fire({
-                    title: "Usuario No Encontrado!",
-                    text: "Presione Ok para continuar!",
-                    icon: "error"
-                });
-    
-            }
-
-        }
-        else{
-
+        } catch (error) {
             Swal.fire({
-                title: "No se Puede Cambiar La Contraseña de Admin!",
-                text: "Contacte A Soporte Tecnico!",
+                title: "Error al Actualizar Datos!",
+                text: "Intente nuevamente más tarde!",
                 icon: "error"
             });
-
         }
-
     }
+
 
     return (
         <>
@@ -147,7 +153,7 @@ export const Validation = () => {
                     <>
                         <Route path="/" element={<Login Logueo={logueo} />} />
                         <Route path="/Recovery" element={<Recovery UpdateUser={UpdateUser} />} />
-                        <Route path="/Rastreo" element={<Rastreo/>} />
+                        <Route path="/Rastreo" element={<Rastreo />} />
                         <Route path="/*" element={<Navigate to="/" />} />
                     </>
                 )}
