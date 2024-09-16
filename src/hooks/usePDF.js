@@ -97,8 +97,7 @@ export const usePDF = (paquetes) => {
         doc.text("CONDICIONES Y FORMA DE PAGO", 15, finalY + 40);
         doc.setFontSize(9);
         doc.setFont("helvetica", "normal");
-        doc.text("20 DIAS CALENDARIO LIBRE DE ALMACENAJE DESPUES DE LA FECHA DE FACTURA.", 15, finalY + 50);
-        doc.text("$1 DOLARES POR DIA DE RECARGO", 15, finalY + 55);
+        doc.text("MÁXIMO 7 DIAS CALENDARIO LIBRE DE ALMACENAJE DESPUES DE LA FECHA DE FACTURA.", 15, finalY + 50);
 
         // Datos de cuenta bancaria
         doc.setFontSize(9);
