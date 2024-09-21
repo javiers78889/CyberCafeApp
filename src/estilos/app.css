@@ -207,3 +207,9 @@ iframe {
     margin-top: 20px;
     border: none;
 }
+
+@media (min-width: 320px) and (max-width: 950px){
+    .formularios{
+        width: 100%;
+    }
+}
