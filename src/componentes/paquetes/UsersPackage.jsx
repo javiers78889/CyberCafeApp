@@ -1,6 +1,7 @@
 
 
-export const UsersPackage = ({ pack = [], ValorLogueo, generatePDF, Login, pago }) => {
+export const UsersPackage = ({ pack = [], ValorLogueo, generatePDF, Login, pago,formatDate }) => {
+    const fechaFormateada = formatDate(pack.fecha);
     return (
         <>
 
@@ -12,7 +13,7 @@ export const UsersPackage = ({ pack = [], ValorLogueo, generatePDF, Login, pago 
                         <td>{pack.peso}</td>
                         <td>${pack.precio}</td>
                         <td>{pack.status}</td>
-                        <td>{pack.fecha}</td>
+                        <td>{fechaFormateada}</td>
 
                        {/*{Login.user && Login.user.length > 0 && Login.user[0].usuario !== 'admin' ? (
                             pack.pago === "Pendiente ⬜" ? (
