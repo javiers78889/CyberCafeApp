@@ -12,7 +12,10 @@ export const Rastreo = () => {
 
 
     const trackeo = () => {
-        window.location.href = `https://clientes.japslogistics.com/ConsultaTracking.aspx?cid=1&idGuia=${trackingNumber}`
+        if(trackingNumber != ''){
+              window.location.href = `https://clientes.japslogistics.com/ConsultaTracking.aspx?cid=1&idGuia=${trackingNumber}`
+        }
+      
 
     }
     return (
