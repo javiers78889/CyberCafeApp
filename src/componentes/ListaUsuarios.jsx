@@ -25,32 +25,36 @@ export const ListaUsuarios = ({ UsuariosExis }) => {
     return (
         <>
             <h6><strong>Lista De Usuarios Registrados</strong></h6>
-            <table className="table table-hover table-striped">
-                <thead className='table-dark'>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Contraseña</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Plan</th>
-                        <th scope="col">Teléfono</th>
-                        <th scope="col">Correo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {currentUsers.map(user => (
-                        <tr key={user.id}>
-                            <th scope="row">{user.id}</th>
-                            <td>{user.usuario}</td>
-                            <td>{user.contraseña}</td>
-                            <td>{user.nombre}</td>
-                            <td>{user.plan}</td>
-                            <td>{user.telefono}</td>
-                            <td>{user.correo}</td>
+            <div className='table-responsive'>
+
+
+                <table className="table table-hover table-striped">
+                    <thead className='table-dark'>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Contraseña</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Plan</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Correo</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {currentUsers.map(user => (
+                            <tr key={user.id}>
+                                <th scope="row">{user.id}</th>
+                                <td>{user.usuario}</td>
+                                <td>{user.contraseña}</td>
+                                <td>{user.nombre}</td>
+                                <td>{user.plan}</td>
+                                <td>{user.telefono}</td>
+                                <td>{user.correo}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
             {/* Renderiza los botones de paginación */}
             <div className="pagination">
