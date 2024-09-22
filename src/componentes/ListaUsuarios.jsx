@@ -25,7 +25,7 @@ export const ListaUsuarios = ({ UsuariosExis }) => {
     return (
         <>
             <h6><strong>Lista De Usuarios Registrados</strong></h6>
-            <div className='table-responsive'>
+    
 
 
                 <table className="table table-hover table-striped">
@@ -54,7 +54,7 @@ export const ListaUsuarios = ({ UsuariosExis }) => {
                         ))}
                     </tbody>
                 </table>
-            </div>
+            
 
             {/* Renderiza los botones de paginación */}
             <div className="pagination">
