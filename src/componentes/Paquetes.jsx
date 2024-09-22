@@ -39,56 +39,59 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
             {isLoading && <div className="alert alert-info">Cargando...</div>}
 
             <div className="container my-2">
-                <table className="table">
-                    <thead className='table-dark'>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Tracking ID</th>
-                            <th scope="col">Peso(lb)</th>
-                            <th scope="col">Precio($)</th>
-                            <th scope="col">Status</th>
-                            {Login.user[0].usuario === 'admin' ? (
-                                <>
-                                    <th scope="col">Pago</th>
-                                    <th scope="col">Fecha de Registro</th>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
-                                </>
-                            ) : (
-                                <>
-                                    <th scope="col">Fecha de Registro</th>
-                                    <th scope="col">Recibo</th>
-                                    {Login.user[0].usuario === 'admin' ? (<th scope="col"></th>) : ('')}
-                                </>
-                            )}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {currentPaquetes.length > 0 ? (
-                            Login.user[0].usuario === 'admin' ? (
-                                currentPaquetes.map(pack => (
-                                    <tr key={pack.id}>
-                                        <AdminPackage Entregar={Entregar} pack={pack} generatePDF={generatePDF} Login={Login} />
-                                    </tr>
-                                ))
-                            ) : (
-                                currentPaquetes.map(pack => (
-                                    <tr key={pack.id}>
-                                        <UsersPackage pack={pack} ValorLogueo={ValorLogueo} pago={pago} generatePDF={generatePDF} Login={Login} />
-                                    </tr>
-                                ))
-                            )
-                        ) : (
+                {/* Envolver la tabla en table-responsive para scroll horizontal en pantallas pequeñas */}
+                <div className="table-responsive">
+                    <table className="table">
+                        <thead className='table-dark'>
                             <tr>
-                                <td colSpan="7">
-                                    <div className="alert alert-primary my-5" role="alert">
-                                        No hay paquetes registrados
-                                    </div>
-                                </td>
+                                <th scope="row">Id</th>
+                                <th scope="row">Tracking ID</th>
+                                <th scope="row">Peso(lb)</th>
+                                <th scope="row">Precio($)</th>
+                                <th scope="row">Status</th>
+                                {Login.user[0].usuario === 'admin' ? (
+                                    <>
+                                        <th scope="row">Pago</th>
+                                        <th scope="row">Fecha de Registro</th>
+                                        <th scope="row"></th>
+                                        <th scope="row"></th>
+                                    </>
+                                ) : (
+                                    <>
+                                        <th scope="row">Fecha de Registro</th>
+                                        <th scope="row">Recibo</th>
+                                        {Login.user[0].usuario === 'admin' ? (<th scope="col"></th>) : ('')}
+                                    </>
+                                )}
                             </tr>
-                        )}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {currentPaquetes.length > 0 ? (
+                                Login.user[0].usuario === 'admin' ? (
+                                    currentPaquetes.map(pack => (
+                                        <tr key={pack.id}>
+                                            <AdminPackage Entregar={Entregar} pack={pack} generatePDF={generatePDF} Login={Login} />
+                                        </tr>
+                                    ))
+                                ) : (
+                                    currentPaquetes.map(pack => (
+                                        <tr key={pack.id}>
+                                            <UsersPackage pack={pack} ValorLogueo={ValorLogueo} pago={pago} generatePDF={generatePDF} Login={Login} />
+                                        </tr>
+                                    ))
+                                )
+                            ) : (
+                                <tr>
+                                    <td colSpan="7">
+                                        <div className="alert alert-primary my-5" role="alert">
+                                            No hay paquetes registrados
+                                        </div>
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
 
                 {(pageCount > 1) && (
                     <ReactPaginate
@@ -110,4 +113,3 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
         </div>
     );
 };
-
