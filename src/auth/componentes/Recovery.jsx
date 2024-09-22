@@ -25,7 +25,7 @@ export const Recovery = ({ UpdateUser }) => {
     }
     return (
         <div className="form-container form-overlay w-60 d-flex align-items-center justify-content-center container centrar margenLog">
-            <form className="w-50 shadow-lg  p-4 bg-white rounded my-5" onSubmit={handlerSubmit}>
+            <form className="formularios shadow-lg  p-4 bg-white rounded my-5" onSubmit={handlerSubmit}>
                 <div className="d-flex justify-content-center align-items-center mb-3">
                     <img className="img-fluid " src={fastShippingImg} width={100} height={100} alt="Foto de perfil" />
                 </div>
