@@ -30,7 +30,7 @@ export const RegisterUsers = ({ addUsers, Login }) => {
 
     return (
         <div className="form-container form-overlay w-80 d-flex justify-content-center  margen">
-            <form className="w-50 shadow-lg p-4 bg-white rounded" onSubmit={handlerSubmit}>
+            <form className="formularios shadow-lg p-4 bg-white rounded" onSubmit={handlerSubmit}>
                 <div className="mb-3">
                     <label className="form-label">Usuario</label>
                     <input type="text" className="form-control" name="usuario" value={usuario} onChange={onInputChange} />
