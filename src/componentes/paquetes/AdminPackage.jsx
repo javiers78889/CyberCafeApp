@@ -1,6 +1,7 @@
 
 
-export const AdminPackage = ({ pack= [], generatePDF, Entregar }) => {
+export const AdminPackage = ({ pack= [], generatePDF, Entregar,formatDate }) => {
+    const fechaFormateada = formatDate(pack.fecha);
     return (
         
             <>
@@ -10,7 +11,7 @@ export const AdminPackage = ({ pack= [], generatePDF, Entregar }) => {
                 <td>${pack.precio}</td>
                 <td>{pack.status}</td>
                 <td>{pack.pago}</td>
-                <td>{pack.fecha}</td>
+                <td>{fechaFormateada}</td>
                 {pack.status === 'Pendiente ⬜' ? (
 
                     <td><button type="button" className="btn btn-success " onClick={() => Entregar(pack.id)}>Entregar<svg className="ms-1 bi bi-send" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
