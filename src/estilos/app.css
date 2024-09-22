@@ -208,12 +208,13 @@ iframe {
     border: none;
 }
 
+.formularios{
+    width: 45%;
+}
+
 @media (min-width: 320px) and (max-width: 950px){
     .formularios{
         width: 100%;
     }
-}
-.formularios{
-    width: 45%;
 }
 
