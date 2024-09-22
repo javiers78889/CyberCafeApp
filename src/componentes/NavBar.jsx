@@ -25,11 +25,18 @@ export const NavBar = ({ logout, Login }) => {
                                 </li>
 
 
+
                             </>
                         ) : (
                             <>
                             </>
                         )}
+                        <li className="nav-item">
+                            <NavLink className="nav-link active" to="/Rastreo">Rastrear Paquete</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link active" to="profile">Mi Perfil</NavLink>
+                        </li>
                     </ul>
                     <ul className="navbar-nav">
                         <li className="nav-item">

@@ -11,11 +11,12 @@ import { RegisterUsers } from "../componentes/RegisterUsers";
 import { handlePayment } from "../payment/pago";
 import { validarPago } from "../payment/validarPago";
 import { useRestApi } from "../hooks/useRestApi";
+import { Rastreo } from "../auth/componentes/Rastreo";
 
-export const UserRouter = ({ Login,UsuariosExis }) => {
-   const{paquetes,isLoading,addPaquetes,addUsers,Entregar,pagarPaquete,}=useRestApi()
+export const UserRouter = ({ Login, UsuariosExis }) => {
+    const { paquetes, isLoading, addPaquetes, addUsers, Entregar, pagarPaquete, } = useRestApi()
 
- 
+
 
     return (
         <>
@@ -24,6 +25,7 @@ export const UserRouter = ({ Login,UsuariosExis }) => {
                 <Route path="register" element={<Register addPaquetes={addPaquetes} Login={Login} />} />
                 <Route path="register/users" element={<RegisterUsers addUsers={addUsers} />} />
                 <Route path="profile/paquetes" element={<Paquetes pago={pagarPaquete} Entregar={Entregar} Login={Login} isLoading={isLoading} paquetess={paquetes} />} />
+                <Route path="/Rastreo" element={<Rastreo />} />
                 <Route path="/*" element={<Navigate to="profile" />} />
             </Routes>
         </>

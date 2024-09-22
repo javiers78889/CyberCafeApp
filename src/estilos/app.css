@@ -223,4 +223,21 @@ iframe {
     .direcciones{
         flex-direction: column;
     }
+    .responsivo{
+       display: flex;
+       flex-direction: column;
+       gap: 2rem;
+       margin-top: 1rem;
+       justify-content: center;
+       align-items: center;
+    }
 }
+.responsivo{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: center;
+ 
+ }
