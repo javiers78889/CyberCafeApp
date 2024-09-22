@@ -212,9 +212,15 @@ iframe {
     width: 45%;
 }
 
+.direcciones{
+    display: flex;
+    gap: 2rem;
+}
 @media (min-width: 320px) and (max-width: 950px){
     .formularios{
         width: 100%;
     }
+    .direcciones{
+        flex-direction: column;
+    }
 }
-
