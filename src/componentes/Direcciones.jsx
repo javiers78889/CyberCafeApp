@@ -18,7 +18,7 @@ export const Direcciones = ({ Login }) => {
     return (
         < >
             <h6 className='text-center '><strong>Mis Direcciones</strong></h6>
-            <div className='d-flex gap-4'>
+            <div className='direcciones'>
                 <MiamiPanama flipped={flipped} Login={Login} handleFlip={handleFlip}/>
 
                 <MaritimoMiamiPanama flipped={flipped} Login={Login} handleFlip={handleFlip}/>
