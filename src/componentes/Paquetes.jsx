@@ -33,6 +33,15 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
         const selectedPage = event.selected;
         setCurrentPage(selectedPage);
     };
+      const formatDate = (dateString) => {
+        const fecha = new Date(dateString);
+        const anio = fecha.getFullYear();
+        const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // getMonth() devuelve un índice de 0 a 11
+        const dia = String(fecha.getDate()).padStart(2, '0'); // getDate() devuelve el día del mes
+
+        return `${anio}-${mes}-${dia}`;
+    };
+
 
     return (
         <div className='Logop'>
@@ -70,13 +79,13 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
                                 Login.user[0].usuario === 'admin' ? (
                                     currentPaquetes.map(pack => (
                                         <tr key={pack.id}>
-                                            <AdminPackage Entregar={Entregar} pack={pack} generatePDF={generatePDF} Login={Login} />
+                                            <AdminPackage Entregar={Entregar} pack={pack} formatDate={formatDate} generatePDF={generatePDF} Login={Login} />
                                         </tr>
                                     ))
                                 ) : (
                                     currentPaquetes.map(pack => (
                                         <tr key={pack.id}>
-                                            <UsersPackage pack={pack} ValorLogueo={ValorLogueo} pago={pago} generatePDF={generatePDF} Login={Login} />
+                                            <UsersPackage pack={pack} ValorLogueo={ValorLogueo} formatDate={formatDate} pago={pago} generatePDF={generatePDF} Login={Login} />
                                         </tr>
                                     ))
                                 )
