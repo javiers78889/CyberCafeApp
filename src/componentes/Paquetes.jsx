@@ -5,7 +5,7 @@ import { UsersPackage } from "./paquetes/UsersPackage";
 import { usePDF } from "../hooks/usePDF";
 import ReactPaginate from 'react-paginate';
 
-export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
+export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading, eliminarPaquete }) => {
     const paquetes = Array.isArray(paquetess.data) ? paquetess.data : [];
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 8;
@@ -33,7 +33,7 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
         const selectedPage = event.selected;
         setCurrentPage(selectedPage);
     };
-      const formatDate = (dateString) => {
+    const formatDate = (dateString) => {
         const fecha = new Date(dateString);
         const anio = fecha.getFullYear();
         const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // getMonth() devuelve un índice de 0 a 11
@@ -64,6 +64,7 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
                                         <th scope="row">Fecha de Registro</th>
                                         <th scope="row"></th>
                                         <th scope="row"></th>
+                                        <th scope="row"></th>
                                     </>
                                 ) : (
                                     <>
@@ -79,7 +80,7 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
                                 Login.user[0].usuario === 'admin' ? (
                                     currentPaquetes.map(pack => (
                                         <tr key={pack.id}>
-                                            <AdminPackage Entregar={Entregar} pack={pack} formatDate={formatDate} generatePDF={generatePDF} Login={Login} />
+                                            <AdminPackage Entregar={Entregar} eliminarPaquete={eliminarPaquete} pack={pack} formatDate={formatDate} generatePDF={generatePDF} Login={Login} />
                                         </tr>
                                     ))
                                 ) : (
@@ -91,11 +92,12 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading }) => {
                                 )
                             ) : (
                                 <tr>
-                                    <td colSpan="7">
+                                    <td colSpan="10">
                                         <div className="alert alert-primary my-5" role="alert">
                                             No hay paquetes registrados
                                         </div>
                                     </td>
+                                   
                                 </tr>
                             )}
                         </tbody>

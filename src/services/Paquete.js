@@ -47,6 +47,24 @@ export const updatePaquetes = async ({ id, status, pago, }) => {
 
 }
 
+export const deletePaquetes = async ({id}) => {
+
+    try {
+
+        const actualiza = await axios.delete(`${api}/${id}`);
+
+        return actualiza.data;
+
+    } catch (error) {
+
+        handleError(error)
+    }
+
+    return undefined;
+
+}
+
+
 
 
 const handleError = (error) => {

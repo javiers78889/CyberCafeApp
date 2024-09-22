@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
 import { findAllUsers, registerAllUsers } from "../auth/services/Users";
 import { PaqueteReducer } from "../Reducer/PaqueteReducer";
-import { findAllPaquetes, registerAllPaquetes, updatePaquetes } from "../services/Paquete";
+import { deletePaquetes, findAllPaquetes, registerAllPaquetes, updatePaquetes } from "../services/Paquete";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { validarPago } from "../payment/validarPago";
@@ -10,7 +10,7 @@ import { handlePayment } from "../payment/pago";
 export const useRestApi = () => {
     const [paquetes, dispatch] = useReducer(PaqueteReducer, []);
     const [isLoading, setIsLoading] = useState(true);
-    const [usuarios,setUsuarios]=useState([])
+    const [usuarios, setUsuarios] = useState([])
     const navigate = useNavigate();
 
     const fetchPaquetes = async () => {
@@ -33,11 +33,11 @@ export const useRestApi = () => {
     const fetchUsuarios = async () => {
         try {
             const result = await findAllUsers();
-           setUsuarios(result)
+            setUsuarios(result)
         } catch (error) {
             console.error("Error al cargar los Usuarios:", error);
         }
-       
+
     };
 
     useEffect(() => {
@@ -91,11 +91,11 @@ export const useRestApi = () => {
     };
     const addUsers = async (obj) => {
         const nuevoUsuario = { ...obj }; // Asegúrate de que el objeto sea un usuario
-        const { usuario,telefono,correo } = nuevoUsuario
+        const { usuario, telefono, correo } = nuevoUsuario
         const usuarios = await findAllUsers();
 
         const verifica = usuarios.filter(u => u.usuario === usuario || u.telefono === telefono || u.correo === correo)
-       
+
 
 
         if (verifica.length > 0) {
@@ -175,6 +175,33 @@ export const useRestApi = () => {
         }
     };
 
+    const eliminarPaquete = async (id) => {
+
+        Swal.fire({
+            title: `¿Seguro que desea eliminar el paquete N° ${id}?`,
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Si",
+            denyButtonText: `No`
+        }).then(async (result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                const eliminar = await deletePaquetes({ id })
+                if (eliminar) {
+                    Swal.fire("Listo!", "", "Paquete Eliminado");
+                    fetchPaquetes();
+                }
+
+
+            } else if (result.isDenied) {
+
+            }
+        });
+
+
+
+    }
+
     return {
 
         paquetes,
@@ -183,7 +210,8 @@ export const useRestApi = () => {
         addUsers,
         Entregar,
         pagarPaquete,
-        usuarios
+        usuarios,
+        eliminarPaquete
 
 
     }
