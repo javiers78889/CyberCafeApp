@@ -68,7 +68,7 @@ export const useRestApi = () => {
             precio = (obj.peso * tarifas).toFixed(2);
 
         } else if (filtro[0].plan === 'Plan Maritimo') {
-            tarifas = 3.25;
+            tarifas = 16.50;
             precio = (obj.peso * tarifas).toFixed(2);
 
         }
