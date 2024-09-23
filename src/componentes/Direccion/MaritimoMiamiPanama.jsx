@@ -36,7 +36,7 @@ export const MaritimoMiamiPanama = ({ flipped, Login, handleFlip }) => {
                             <h6 className="card-title text-center"><strong>Marítimo</strong></h6>
 
                             <p className="card-text">
-                                <strong>Nombre:</strong> EVAN3 OCEAN {Login.user[0].nombre}{Login.user[0].apellido} <br />
+                                <strong>Nombre:</strong> EVAN3 OCEAN-{Login.user[0].nombre}{Login.user[0].apellido} <br />
                                 <strong>Dirección:</strong> 5401 NW 72ND AVE,Doral FL 33166<br />
                                 <strong>Ciudad:</strong> Doral<br />
                                 <strong>Estado:</strong> Florida<br />
