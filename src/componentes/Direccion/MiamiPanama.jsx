@@ -36,7 +36,6 @@ export const MiamiPanama = ({ flipped, Login, handleFlip }) => {
                             <h6 className="text-center"><strong>Aéreo</strong></h6>
                             <p className="card-text">
                                 <strong>Nombre:</strong> EVAN3-{Login.user[0].nombre}{Login.user[0].apellido}<br />
-                                <strong>Apellido:</strong> {Login.user[0].nombre}<br />
                                 <strong>Direccion #1:</strong> 5401 NW 72ND AVE,Doral FL 33166<br />
                                 <strong>Ciudad:</strong> Doral,<br />
                                 <strong>Estado:</strong> Florida<br />
