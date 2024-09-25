@@ -19,12 +19,12 @@ export const Rastreo = () => {
 
     }
     return (
-        <div className='centrar'>
+        <div className='centrar margenLog'>
 
 
 
 
-            <div className="tracking-container shadow-lg p-4 bg-white rounded  justify-content-center align-item-center formularios">
+            <div className="tracking-container shadow-lg p-4 bg-white rounded  justify-content-center align-item-center formularios my-5">
                 <div className="d-flex justify-content-center align-items-center mb-3">
                     <img className="img-fluid " src={fastShippingImg} width={100} height={100} alt="Foto de perfil" />
                 </div>
