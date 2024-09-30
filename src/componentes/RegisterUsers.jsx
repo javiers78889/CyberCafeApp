@@ -62,11 +62,11 @@ export const RegisterUsers = ({ addUsers, Login }) => {
                     <input type="text" className="form-control" name="telefono" value={telefono} onChange={onInputChange} />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Correo</label>
+                    <label className="form-label">Correo(Opcional)</label>
                     <input type="email" className="form-control" name="correo" value={correo} onChange={onInputChange} />
                 </div>
                 <div className="mb-3">
-                    <label className="form-label">Fecha De Nacimiento</label>
+                    <label className="form-label">Fecha De Nacimiento(Opcional)</label>
                     <input type="date" className="form-control" name="fechaNacimiento" value={fechaNacimiento} onChange={onInputChange} />
                 </div>
 
