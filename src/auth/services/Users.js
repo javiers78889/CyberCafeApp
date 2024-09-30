@@ -53,7 +53,6 @@ export const UpdateAllUsers = async (body) => {
         nombre,
         plan,
         telefono,
-        correo,
 
     } = body;
 
@@ -63,9 +62,8 @@ export const UpdateAllUsers = async (body) => {
         nombre,
         plan,
         telefono,
-        correo,
     }
-    
+    console.log(res)
     try {
         const update = await axios.patch(`${api}/${id}`, res)
 

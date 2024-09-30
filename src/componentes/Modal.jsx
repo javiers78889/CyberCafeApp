@@ -75,21 +75,12 @@ export const Modal = ({ show, handleClose, user, onSubmit,onInputChange }) => {
                                             type="text"
                                             className="form-control"
                                             name="telefono"
+                                            onChange={onInputChange}
                                             defaultValue={user.telefono}
                                             required
                                         />
                                     </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="nombre" className="form-label">Correo</label>
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            name="correo"
-                                            onChange={onInputChange}
-                                            defaultValue={user.correo}
-                                            required
-                                        />
-                                    </div>
+                                
                                     <button type="submit" onSubmit={onSubmit} className="btn btn-primary">Guardar cambios</button>
                                 </form>
                             )}

@@ -38,7 +38,7 @@ export const ListaUsuarios = ({ UsuariosExis, fetchUsuarios }) => {
     };
     const onInputChange = (event) => {
         const { name, value } = event.target;
-
+        console.log(value)
         setSelectedUser({ ...selectedUser, [name]: value })
 
 
