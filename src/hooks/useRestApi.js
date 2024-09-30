@@ -118,7 +118,7 @@ export const useRestApi = () => {
 
                 fetchUsuarios()
             }
-            navigate('profile/paquetes');
+            navigate('profile');
         }
 
 
