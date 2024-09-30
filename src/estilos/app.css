@@ -62,6 +62,11 @@
 .centrar {
     margin-top: 3rem;
 }
+.modal-backdrop.show {
+    opacity: 0.8; /* Ajusta la opacidad según lo necesites */
+    background-color: black; /* Color de fondo negro */
+}
+
 
 .carta-container {
     perspective: 1000px;

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { Modal } from './Modal';
+import { UpdateAllUsers } from '../auth/services/Users';
+import Swal from 'sweetalert2';
 
-export const ListaUsuarios = ({ UsuariosExis }) => {
+export const ListaUsuarios = ({ UsuariosExis, fetchUsuarios }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const usersPerPage = 4;
 
@@ -22,10 +25,51 @@ export const ListaUsuarios = ({ UsuariosExis }) => {
         setCurrentPage(pageNumber);
     };
 
+    const [show, setShow] = useState(false);
+    const [selectedUser, setSelectedUser] = useState(''); // Para guardar el usuario seleccionado
+    const [id, setID] = useState(0)
+    const handleClose = () => {
+        setSelectedUser('')
+        setShow(false)
+    };
+    const handleShow = (user) => {
+        setSelectedUser(user); // Guarda el usuario seleccionado
+        setShow(true);
+    };
+    const onInputChange = (event) => {
+        const { name, value } = event.target;
+
+        setSelectedUser({ ...selectedUser, [name]: value })
+
+
+    }
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // Lógica para manejar el envío del formulario
+        const actualizar = await UpdateAllUsers({ ...selectedUser })
+        if (!actualizar) {
+            Swal.fire({
+                icon: "error",
+                title: "Erro de Conexión",
+                text: "Intentelo Más Tarde!",
+            });
+        }
+        Swal.fire({
+            icon: "success",
+            title: "Usuario Editado",
+            text: "Presione Ok",
+        });
+        fetchUsuarios();
+        handleClose();
+    };
+
     return (
         <>
+            <Modal show={show} onInputChange={onInputChange} handleClose={handleClose} user={selectedUser} onSubmit={handleSubmit} />
             <h6><strong>Lista De Usuarios Registrados</strong></h6>
-            
+
             <div className="table-responsive w-100">
                 <table className="table table-hover table-striped">
                     <thead className='table-dark'>
@@ -36,7 +80,8 @@ export const ListaUsuarios = ({ UsuariosExis }) => {
                             <th scope="col">Nombre</th>
                             <th scope="col">Plan</th>
                             <th scope="col">Teléfono</th>
-                            <th scope="col">Correo</th>
+                           
+                            <th scope="col">Editar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,7 +93,14 @@ export const ListaUsuarios = ({ UsuariosExis }) => {
                                 <td>{user.nombre}</td>
                                 <td>{user.plan}</td>
                                 <td>{user.telefono}</td>
-                                <td>{user.correo}</td>
+                               
+                                <td><button
+                                    type="button"
+                                    className="btn btn-primary"
+                                    onClick={() => handleShow(user)} // Llama a handleShow con el usuario
+                                >
+                                    Editar
+                                </button></td>
                             </tr>
                         ))}
                     </tbody>
@@ -67,6 +119,7 @@ export const ListaUsuarios = ({ UsuariosExis }) => {
                     </button>
                 ))}
             </div>
+
         </>
     );
 };

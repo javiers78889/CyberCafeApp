@@ -27,6 +27,7 @@ export const Validation = () => {
     const navigate = useNavigate();
 
     const [UsuariosExis, SetUsuarioExis] = useState(initialLog);
+    
     useEffect(() => {
         const axiosData = async () => {
             const obUsers = await findAllUsers();

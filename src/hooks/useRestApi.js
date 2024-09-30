@@ -113,9 +113,12 @@ export const useRestApi = () => {
                 text: "Presione Ok para continuar!",
                 icon: "success"
             });
-            navigate('profile/paquetes');
             const posteo = await registerAllUsers(nuevoUsuario);
-            findAllUsers()
+            if (posteo) {
+
+                fetchUsuarios()
+            }
+            navigate('profile/paquetes');
         }
 
 
@@ -211,7 +214,8 @@ export const useRestApi = () => {
         Entregar,
         pagarPaquete,
         usuarios,
-        eliminarPaquete
+        eliminarPaquete,
+        fetchUsuarios
 
 
     }

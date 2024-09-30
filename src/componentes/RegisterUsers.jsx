@@ -61,14 +61,7 @@ export const RegisterUsers = ({ addUsers, Login }) => {
                     <label className="form-label">Teléfono</label>
                     <input type="text" className="form-control" name="telefono" value={telefono} onChange={onInputChange} />
                 </div>
-                <div className="mb-3">
-                    <label className="form-label">Correo(Opcional)</label>
-                    <input type="email" className="form-control" name="correo" value={correo} onChange={onInputChange} />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Fecha De Nacimiento(Opcional)</label>
-                    <input type="date" className="form-control" name="fechaNacimiento" value={fechaNacimiento} onChange={onInputChange} />
-                </div>
+            
 
                 <button type="submit" className="btn btn-danger form-control">Crear</button>
             </form>

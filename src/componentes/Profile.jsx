@@ -4,7 +4,7 @@ import { Direcciones } from './Direcciones';
 import { ListaUsuarios } from './ListaUsuarios';
 import { Link } from 'react-router-dom';
 
-export const Profile = ({ paquetes, Login, UsuariosExis }) => {
+export const Profile = ({ paquetes, Login, UsuariosExis,fetchUsuarios }) => {
 
     const paquetesArray = Array.isArray(paquetes.data) ? paquetes.data : [];
     // Calculate the total number of packages
@@ -63,7 +63,7 @@ export const Profile = ({ paquetes, Login, UsuariosExis }) => {
                 </tbody>
             </table>
             {Login.user[0].usuario === 'admin' ? (
-                <ListaUsuarios UsuariosExis={UsuariosExis} />
+                <ListaUsuarios UsuariosExis={UsuariosExis} fetchUsuarios={fetchUsuarios} />
 
             ) :
                 (

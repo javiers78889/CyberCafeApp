@@ -20,10 +20,11 @@ export const findAllUsers = async () => {
 }
 
 
-export const registerAllUsers = async ({ usuario, contraseña, isAuth, nombre, plan, telefono, fechaNacimiento, correo }) => {
+export const registerAllUsers = async ({ usuario, contraseña, isAuth, nombre, plan, telefono}) => {
+
 
     try {
-        const posteo = await axios.post(api, { usuario, contraseña, isAuth, nombre, plan, telefono, fechaNacimiento, correo })
+        const posteo = await axios.post(api, { usuario, contraseña, isAuth, nombre, plan, telefono })
         return posteo.data;
 
     } catch (error) {
@@ -36,6 +37,37 @@ export const registerAllUsers = async ({ usuario, contraseña, isAuth, nombre, p
 export const UpdateUsers = async ({ usuario, contraseña }) => {
     try {
         const update = await axios.put(api, { usuario, contraseña })
+
+        return update.data
+
+    } catch (error) {
+        handleError(error)
+
+    }
+}
+export const UpdateAllUsers = async (body) => {
+    const {
+        id,
+        usuario,
+        contraseña,
+        nombre,
+        plan,
+        telefono,
+        correo,
+
+    } = body;
+
+    const res = {
+        usuario,
+        contraseña,
+        nombre,
+        plan,
+        telefono,
+        correo,
+    }
+    
+    try {
+        const update = await axios.patch(`${api}/${id}`, res)
 
         return update.data
 

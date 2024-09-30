@@ -14,14 +14,14 @@ import { useRestApi } from "../hooks/useRestApi";
 import { Rastreo } from "../auth/componentes/Rastreo";
 
 export const UserRouter = ({ Login, UsuariosExis }) => {
-    const { paquetes, isLoading, addPaquetes, addUsers, Entregar, pagarPaquete, eliminarPaquete } = useRestApi()
-
-
+    const { paquetes, isLoading, addPaquetes, addUsers, Entregar,usuarios, pagarPaquete,fetchUsuarios, eliminarPaquete } = useRestApi()
+    const{lista ,setLista}=useState([])
+   
 
     return (
         <>
             <Routes>
-                <Route path="profile" element={<Profile paquetes={paquetes} Login={Login} UsuariosExis={UsuariosExis} />} />
+                <Route path="profile" element={<Profile paquetes={paquetes} fetchUsuarios={fetchUsuarios} Login={Login} UsuariosExis={usuarios} />} />
                 <Route path="register" element={<Register addPaquetes={addPaquetes} Login={Login} />} />
                 <Route path="register/users" element={<RegisterUsers addUsers={addUsers} />} />
                 <Route path="profile/paquetes" element={<Paquetes pago={pagarPaquete} eliminarPaquete={eliminarPaquete} Entregar={Entregar} Login={Login} isLoading={isLoading} paquetess={paquetes} />} />
