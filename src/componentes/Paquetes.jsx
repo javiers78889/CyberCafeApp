@@ -55,6 +55,7 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading, eliminar
                             <tr>
                                 <th scope="row">Id</th>
                                 <th scope="row">Tracking ID</th>
+                                <th scope="row">Usuario</th>
                                 <th scope="row">Peso(lb)</th>
                                 <th scope="row">Precio($)</th>
                                 <th scope="row">Status</th>

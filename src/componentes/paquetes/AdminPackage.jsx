@@ -7,6 +7,7 @@ export const AdminPackage = ({ pack = [], generatePDF, Entregar, formatDate, eli
         <>
             <th scope="row">{pack.id}</th>
             <td>{pack.tracking}</td>
+            <td>{pack.usuario}</td>
             <td>{pack.peso}</td>
             <td>${pack.precio}</td>
             <td>{pack.status}</td>
