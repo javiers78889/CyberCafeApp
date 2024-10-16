@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
 import { findAllUsers, registerAllUsers } from "../auth/services/Users";
 import { PaqueteReducer } from "../Reducer/PaqueteReducer";
-import { deletePaquetes, findAllPaquetes, registerAllPaquetes, updatePaquetes } from "../services/Paquete";
+import { deletePaquetes, findAllPaquetes, registerAllPaquetes, sendMessage, updatePaquetes } from "../services/Paquete";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { validarPago } from "../payment/validarPago";
@@ -200,8 +200,40 @@ export const useRestApi = () => {
 
             }
         });
+    }
 
+    const reenviarMensaje = async (body) => {
 
+        const { usuario } = body
+
+        const usuarios = await findAllUsers();
+
+        const verifica = usuarios.filter(u => u.usuario === usuario)
+
+        const telefono = verifica[0].telefono
+        const nombre = verifica[0].nombre
+
+        const final = { ...body, telefono, nombre }
+        try {
+            await sendMessage(final);
+
+    
+            Swal.fire({
+                title: "Mensaje Reenviado!",
+                text: "Presione Ok para continuar!",
+                icon: "success"
+            });
+            
+        } catch (error) {
+            Swal.fire({
+                title: "Error al reenviar el mensaje!",
+                text: "Presione Ok para continuar!",
+                icon: "error"
+            });
+        }
+
+       
+        
 
     }
 
@@ -215,7 +247,8 @@ export const useRestApi = () => {
         pagarPaquete,
         usuarios,
         eliminarPaquete,
-        fetchUsuarios
+        fetchUsuarios,
+        reenviarMensaje
 
 
     }

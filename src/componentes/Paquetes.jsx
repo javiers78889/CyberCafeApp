@@ -4,9 +4,11 @@ import { AdminPackage } from "./paquetes/AdminPackage";
 import { UsersPackage } from "./paquetes/UsersPackage";
 import { usePDF } from "../hooks/usePDF";
 import ReactPaginate from 'react-paginate';
+import { useRestApi } from '../hooks/useRestApi';
 
 export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading, eliminarPaquete }) => {
     const paquetes = Array.isArray(paquetess.data) ? paquetess.data : [];
+    const { reenviarMensaje } = useRestApi()
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 8;
 
@@ -66,6 +68,7 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading, eliminar
                                         <th scope="row"></th>
                                         <th scope="row"></th>
                                         <th scope="row"></th>
+                                        <th scope="row"></th>
                                     </>
                                 ) : (
                                     <>
@@ -81,7 +84,7 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading, eliminar
                                 Login.user[0].usuario === 'admin' ? (
                                     currentPaquetes.map(pack => (
                                         <tr key={pack.id}>
-                                            <AdminPackage Entregar={Entregar} eliminarPaquete={eliminarPaquete} pack={pack} formatDate={formatDate} generatePDF={generatePDF} Login={Login} />
+                                            <AdminPackage reenviarMensaje={reenviarMensaje} Entregar={Entregar} eliminarPaquete={eliminarPaquete} pack={pack} formatDate={formatDate} generatePDF={generatePDF} Login={Login} />
                                         </tr>
                                     ))
                                 ) : (
@@ -98,7 +101,7 @@ export const Paquetes = ({ paquetess, Login, Entregar, pago, isLoading, eliminar
                                             No hay paquetes registrados
                                         </div>
                                     </td>
-                                   
+
                                 </tr>
                             )}
                         </tbody>

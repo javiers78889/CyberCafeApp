@@ -2,6 +2,7 @@ import axios from "axios";
 
 
 const api = 'https://fastshippingback-t6ub.onrender.com/paquetes';
+const apiAltern = 'https://fastshippingback-t6ub.onrender.com/paquetes/alternative';
 
 
 export const findAllPaquetes = async () => {
@@ -20,6 +21,18 @@ export const registerAllPaquetes = async ({ usuario, tracking, peso, precio, sta
 
     try {
         const posteo = await axios.post(api, { usuario, tracking, peso, precio, status, pago, telefono, nombre, tarifas })
+        return posteo.data;
+
+    } catch (error) {
+        handleError(error)
+    }
+    return undefined;
+
+}
+export const sendMessage = async ({ usuario, tracking, peso, precio, status, pago, telefono, nombre, tarifas }) => {
+
+    try {
+        const posteo = await axios.post(apiAltern, { usuario, tracking, peso, precio, status, pago, telefono, nombre, tarifas })
         return posteo.data;
 
     } catch (error) {
