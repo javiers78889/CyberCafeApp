@@ -32,7 +32,7 @@ export const registerAllPaquetes = async ({ usuario, tracking, peso, precio, sta
 export const sendMessage = async ({ usuario, tracking, peso, precio, status, pago, telefono, nombre, tarifas }) => {
 
     try {
-        const posteo = await axios.post(apiAltern, { usuario, tracking, peso, precio, status, pago, telefono, nombre, tarifas })
+        const posteo = await axios.post(apiAltern, {  tracking, precio, telefono, nombre })
         return posteo.data;
 
     } catch (error) {

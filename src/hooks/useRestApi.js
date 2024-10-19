@@ -203,7 +203,7 @@ export const useRestApi = () => {
     }
 
    const reenviarMensaje = async (body) => {
-    const { usuario } = body;
+    const { usuario,precio,peso, tarifas } = body;
 
     try {
         const usuarios = await findAllUsers();
@@ -215,10 +215,9 @@ export const useRestApi = () => {
         }
 
         // Desestructuración con verificación de propiedades
-        const { telefono, nombre, precio,peso, tarifas } = verifica[0];
-        const total = (peso * tarifas).toFixed(2);
-        
-        const precioFormateado = precio.toFixed(2);
+        const { telefono, nombre,  } = verifica[0];
+        const total = (precio).toFixed(2);
+        console.log()
         const final = { ...body, telefono, nombre, precio: total };
 
         await sendMessage(final);
