@@ -216,7 +216,7 @@ export const useRestApi = () => {
 
         // Desestructuración con verificación de propiedades
         const { telefono, nombre, precio } = verifica[0];
-
+        console.log(precio)
         // Verifica que 'precio' sea un número antes de usar toFixed
         if (precio === undefined || typeof precio !== 'number') {
             throw new Error('Precio no definido o no es un número');
