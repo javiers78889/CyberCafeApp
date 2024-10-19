@@ -202,40 +202,48 @@ export const useRestApi = () => {
         });
     }
 
-    const reenviarMensaje = async (body) => {
+   const reenviarMensaje = async (body) => {
+    const { usuario } = body;
 
-        const { usuario } = body
-
+    try {
         const usuarios = await findAllUsers();
+        const verifica = usuarios.filter(u => u.usuario === usuario);
 
-        const verifica = usuarios.filter(u => u.usuario === usuario)
-
-        const telefono = verifica[0].telefono
-        const nombre = verifica[0].nombre
-        const precio = verifica[0].precio.toFixed(2);
-        const final = { ...body, telefono, nombre,precio }
-        try {
-            await sendMessage(final);
-
-    
-            Swal.fire({
-                title: "Mensaje Reenviado!",
-                text: "Presione Ok para continuar!",
-                icon: "success"
-            });
-            
-        } catch (error) {
-            Swal.fire({
-                title: "Error al reenviar el mensaje!",
-                text: "Presione Ok para continuar!",
-                icon: "error"
-            });
+        // Verifica que se haya encontrado al menos un usuario
+        if (verifica.length === 0) {
+            throw new Error('Usuario no encontrado');
         }
 
-       
-        
+        // Desestructuración con verificación de propiedades
+        const { telefono, nombre, precio } = verifica[0];
 
+        // Verifica que 'precio' sea un número antes de usar toFixed
+        if (precio === undefined || typeof precio !== 'number') {
+            throw new Error('Precio no definido o no es un número');
+        }
+
+        const precioFormateado = precio.toFixed(2);
+        const final = { ...body, telefono, nombre, precio: precioFormateado };
+
+        await sendMessage(final);
+
+        Swal.fire({
+            title: "Mensaje Reenviado!",
+            text: "Presione Ok para continuar!",
+            icon: "success"
+        });
+
+    } catch (error) {
+        // Manejo de errores más específico
+        console.error('Error:', error.message);
+        Swal.fire({
+            title: "Error al reenviar el mensaje!",
+            text: error.message || "Ocurrió un error inesperado. Presione Ok para continuar!",
+            icon: "error"
+        });
     }
+}
+
 
     return {
 
