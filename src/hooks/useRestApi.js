@@ -215,7 +215,7 @@ export const useRestApi = () => {
         }
 
         // Desestructuración con verificación de propiedades
-        const { telefono, nombre, precio,peso, tarfifas } = verifica[0];
+        const { telefono, nombre, precio,peso, tarifas } = verifica[0];
         const total = (peso * tarifas).toFixed(2);
         
         const precioFormateado = precio.toFixed(2);
