@@ -208,22 +208,18 @@ export const useRestApi = () => {
     try {
         const usuarios = await findAllUsers();
         const verifica = usuarios.filter(u => u.usuario === usuario);
-
+        
         // Verifica que se haya encontrado al menos un usuario
         if (verifica.length === 0) {
             throw new Error('Usuario no encontrado');
         }
 
         // Desestructuración con verificación de propiedades
-        const { telefono, nombre, precio } = verifica[0];
-        console.log(precio)
-        // Verifica que 'precio' sea un número antes de usar toFixed
-        if (precio === undefined || typeof precio !== 'number') {
-            throw new Error('Precio no definido o no es un número');
-        }
-
+        const { telefono, nombre, precio,peso, tarfifas } = verifica[0];
+        const total = (peso * tarifas).toFixed(2);
+        
         const precioFormateado = precio.toFixed(2);
-        const final = { ...body, telefono, nombre, precio: precioFormateado };
+        const final = { ...body, telefono, nombre, precio: total };
 
         await sendMessage(final);
 
