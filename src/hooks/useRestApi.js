@@ -212,8 +212,8 @@ export const useRestApi = () => {
 
         const telefono = verifica[0].telefono
         const nombre = verifica[0].nombre
-
-        const final = { ...body, telefono, nombre }
+        const precio = verifica[0].precio.toFixed(2);
+        const final = { ...body, telefono, nombre,precio }
         try {
             await sendMessage(final);
 
